@@ -23,6 +23,13 @@ header h1 {
 }
 
 
+#myInput{
+  width: 75%;
+  margin-left: 12.4%;
+  margin-bottom: 20px;
+  height: 25px;
+}
+
 
 
 /*  recipe container -----------------*/

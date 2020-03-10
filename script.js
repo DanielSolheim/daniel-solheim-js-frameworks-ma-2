@@ -18,6 +18,7 @@ function App(props){
      <header>
        <h1> Check these awesome meals </h1>
       </header>
+      <input type="text" onkeyup="searchItems()" id="myInput" placeholder="Search for names..">
         ${RecipeContainer(props)}
       <footer>
            <p><i> @Daniel Solheim </i></p>
@@ -41,15 +42,6 @@ function DisplayRecipe(props){
 
 function RecipeContainer(props){
 
-  props.results.forEach(element =>{
-   word = element.ingredients.split(",");
-   console.log(word);
-   console.log(word.length)
- })
-
-
-
-
   return `
    <div class="recipes">
 
@@ -60,4 +52,35 @@ function RecipeContainer(props){
 
    </div>
   `
+}
+
+
+
+
+/*Making a search function, This searches by the title of the recipe item and is update each time the user presses a key (onkeyup)*/
+/* https://www.w3schools.com/howto/howto_js_filter_lists.asp */
+function searchItems(){
+
+  const myInput = document.getElementById('myInput');
+  const myItem = document.getElementsByClassName('recipe-item');
+  var filter = myInput.value.toUpperCase();
+
+
+
+
+
+  for (var i = 0; i < myItem.length; i++){
+
+      var itemName = myItem[i].getElementsByTagName('h4')[0];
+      var txtContent = itemName.textContent || itemName.innerText;
+
+  if(txtContent.toUpperCase().indexOf(filter) > -1){
+      myItem[i].style.display = "";
+    } else{
+      myItem[i].style.display = "none";
+    }
+  }
+
+
+
 }
